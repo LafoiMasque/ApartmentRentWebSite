@@ -1,0 +1,63 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ Assembly Name="System.Core" #>
+<#@ Assembly Name="EntityFramework" #>
+<#@ Assembly Name="System.Xml.Linq" #>
+<#@ Assembly Name="$(SolutionDir)ApartmentRent.Common\bin\Debug\ApartmentRent.Common.dll" #>
+<#@ Assembly Name="$(SolutionDir)ApartmentRent.Model\bin\Debug\ApartmentRent.Model.dll" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.IO" #>
+<#@ Import Namespace="System.Linq" #>
+<#@ Import Namespace="System.Text" #>
+<#@ import namespace="System.Data.Entity" #>
+<#@ import namespace="System.Reflection" #>
+<#@ Import Namespace="System.Collections.Generic" #>
+<#@ Import Namespace="ApartmentRent.Common.UtilityClass" #>
+<#@ Import Namespace="ApartmentRent.Model.DataModel" #>
+<#
+    string modelFile = @"D:\ProjectCode\VS2017\ApartmentRentWebSite\ApartmentRent.Model\bin\Debug\ApartmentRent.Model.dll";
+	string filePath = @"D:\ProjectCode\VS2017\ApartmentRentWebSite\ApartmentRent.WebApp\Config\entityInfo.xml";
+    if (File.Exists(modelFile))
+	{
+		byte[] fileData = File.ReadAllBytes(modelFile);
+		Assembly assembly = Assembly.Load(fileData);
+		Type[] assemblyTypes = assembly.GetTypes();
+		Type type = assemblyTypes.FirstOrDefault(m => m.BaseType.Name.Equals("DbContext"));
+		if (type != null)
+		{
+			XmlUtils xmlUtils = new XmlUtils();
+			xmlUtils.BeginInitialize(filePath);
+			PropertyInfo[] types = type.GetProperties();
+			foreach (PropertyInfo item in types)
+			{
+				if (item.PropertyType.IsGenericType)
+				{
+					Type genericType = item.PropertyType.GenericTypeArguments[0];
+					string entityName = genericType.Name;
+					string dllName = "ApartmentRent.DAL";
+					EntityModel entityModel = new EntityModel()
+					{
+						Key = string.Format("I{0}Dal", entityName),
+						Name = entityName,
+						FullName = string.Format("{0}.{1}Dal", dllName, entityName),
+						AssemblyPath = dllName,
+						NameSpace = dllName,
+					};
+					bool isExist = xmlUtils.ExistXmlElementInstance<EntityModel>(o =>
+					{
+						var element = o.Element("Name");
+						return element != null && o.Element("Name").Value == entityName;
+					});
+					if (isExist)
+					{
+						xmlUtils.ReplaceXmlElementInstance<EntityModel>("EntityModels", entityModel, o => o.Element("Name").Value == entityName);
+					}
+					else
+					{
+						xmlUtils.AddXmlElementInstance<EntityModel>("EntityModels", entityModel);
+					}
+				}
+			}
+			xmlUtils.EndInitialize();
+		}
+	}
+#>
