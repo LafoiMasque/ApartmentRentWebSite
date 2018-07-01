@@ -7,17 +7,17 @@ namespace ApartmentRent.DALFactory
 	{
 		public DbContext DbContext { get { return DbContextFactory.CreateDbContext(); } }
 
-		private T m_createInstanceDal = null;
+		private T _createInstanceDal = null;
 
 		public T CreateInstanceDal
 		{
 			get
 			{
-				if (m_createInstanceDal == null)
+				if (_createInstanceDal == null)
 				{
-					m_createInstanceDal = AbstractFactory.CreateInstanceDal<T>();
+					_createInstanceDal = AbstractFactory.CreateInstanceDal<T>();
 				}
-				return m_createInstanceDal;
+				return _createInstanceDal;
 			}
 		}
 

@@ -10,7 +10,8 @@ namespace ApartmentRent.DALFactory
 			IDbSession<T> dbSession = (IDbSession<T>)CallContext.GetData("dbSession");
 			if (dbSession == null)
 			{
-				dbSession = new DbSession<T>();
+				//dbSession = new DbSession<T>();
+				dbSession = AbstractFactory.CreateInstanceDal<IDbSession<T>>("IDbSession", typeof(T));
 				CallContext.SetData("dbSession", dbSession);
 			}
 			return dbSession;

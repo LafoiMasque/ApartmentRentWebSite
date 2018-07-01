@@ -9,7 +9,7 @@
 // <copyright file="WebSiteDbContext">
 //		Copyright(c)2018 rights reserved.
 //		开 发 者：黄翔宇@中国
-//		生成时间：2018-06-30 01:04
+//		生成时间：2018-07-01 15:35
 // </copyright>
 //------------------------------------------------------------------------------
 using ApartmentRent.IBLL;
@@ -22,7 +22,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class ActualAmountDetailService : BaseService<IActualAmountDetailDal>, IActualAmountDetailService
 	{
-		
 	}
 
     /// <summary>
@@ -30,7 +29,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class BillRentService : BaseService<IBillRentDal>, IBillRentService
 	{
-		
 	}
 
     /// <summary>
@@ -38,7 +36,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class BuildingService : BaseService<IBuildingDal>, IBuildingService
 	{
-		
 	}
 
     /// <summary>
@@ -46,7 +43,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class BuildRoomService : BaseService<IBuildRoomDal>, IBuildRoomService
 	{
-		
 	}
 
     /// <summary>
@@ -54,7 +50,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class HouseOwnerService : BaseService<IHouseOwnerDal>, IHouseOwnerService
 	{
-		
 	}
 
     /// <summary>
@@ -62,7 +57,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class HouseRenterService : BaseService<IHouseRenterDal>, IHouseRenterService
 	{
-		
 	}
 
     /// <summary>
@@ -70,7 +64,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class PayTypeInfoService : BaseService<IPayTypeInfoDal>, IPayTypeInfoService
 	{
-		
 	}
 
     /// <summary>
@@ -78,7 +71,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class RentRecordsService : BaseService<IRentRecordsDal>, IRentRecordsService
 	{
-		
 	}
 
     /// <summary>
@@ -86,7 +78,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class ThingsService : BaseService<IThingsDal>, IThingsService
 	{
-		
 	}
 
     /// <summary>
@@ -94,7 +85,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class WaterPowerRentService : BaseService<IWaterPowerRentDal>, IWaterPowerRentService
 	{
-		
 	}
 
     /// <summary>
@@ -102,7 +92,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class WeChatUserInfoService : BaseService<IWeChatUserInfoDal>, IWeChatUserInfoService
 	{
-		
 	}
 
 }

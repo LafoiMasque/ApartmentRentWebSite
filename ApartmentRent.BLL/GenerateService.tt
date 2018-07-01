@@ -50,7 +50,6 @@ namespace ApartmentRent.BLL
     /// </summary>  
 	public partial class <#= entityName #>Service : BaseService<I<#= entityName #>Dal>, I<#= entityName #>Service
 	{
-		
 	}
 
 <#

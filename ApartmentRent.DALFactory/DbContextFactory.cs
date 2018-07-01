@@ -1,5 +1,4 @@
-﻿using ApartmentRent.Model.DataBaseModel;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Runtime.Remoting.Messaging;
 
 namespace ApartmentRent.DALFactory
@@ -18,7 +17,8 @@ namespace ApartmentRent.DALFactory
 			DbContext dbContext = (DbContext)CallContext.GetData("dbContext");
 			if (dbContext == null)
 			{
-				dbContext = new WebSiteDbContext();
+				//dbContext = new WebSiteDbContext();
+				dbContext = AbstractFactory.CreateInstanceDal<DbContext>("WebSiteDbContext");
 				CallContext.SetData("dbContext", dbContext);
 			}
 			return dbContext;

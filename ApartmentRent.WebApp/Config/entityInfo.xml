@@ -77,4 +77,19 @@
     <FullName>ApartmentRent.DAL.WeChatUserInfoDal</FullName>
     <Name>WeChatUserInfo</Name>
   </EntityModel>
+  <EntityModel>
+    <Key>WebSiteDbContext</Key>
+    <AssemblyPath>ApartmentRent.Model</AssemblyPath>
+    <NameSpace>ApartmentRent.Model.DataBaseModel</NameSpace>
+    <FullName>ApartmentRent.Model.DataBaseModel.WebSiteDbContext</FullName>
+    <Name>WebSiteDbContext</Name>
+  </EntityModel>
+  <EntityModel>
+    <Key>IDbSession</Key>
+    <AssemblyPath>ApartmentRent.DALFactory</AssemblyPath>
+    <NameSpace>ApartmentRent.DALFactory</NameSpace>
+    <FullName>ApartmentRent.DALFactory.DbSession`1</FullName>
+    <Name>DbSession</Name>
+    <Type>ApartmentRent.DALFactory.DbSession`1</Type>
+  </EntityModel>
 </EntityModels>
