@@ -7,7 +7,7 @@ using System.Linq.Expressions;
 
 namespace ApartmentRent.BLL
 {
-	public class BaseService<T> : IBaseService where T : class, IBaseDal
+	public abstract class BaseService<T> where T : class, IBaseDal
 	{
 		protected IDbSession<T> CurrentDbSession
 		{

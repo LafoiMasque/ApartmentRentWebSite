@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomAttribute\EnumDisplayAttribute.cs" />
     <Compile Include="DataBaseModel\ActualAmountDetail.cs" />
     <Compile Include="DataBaseModel\BillRent.cs" />
     <Compile Include="DataBaseModel\Building.cs" />
@@ -62,16 +61,15 @@
     <Compile Include="DataBaseModel\WaterPowerRent.cs" />
     <Compile Include="DataBaseModel\WebSiteDbContext.cs" />
     <Compile Include="DataBaseModel\WeChatUserInfo.cs" />
-    <Compile Include="DataModel\EntityModel.cs" />
-    <Compile Include="EnumExtention\EnumTypeExtention.cs" />
-    <Compile Include="EnumType\ResultCodeEnum.cs" />
-    <Compile Include="DataModel\ResultModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="DataModel\" />
+    <Folder Include="EnumType\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

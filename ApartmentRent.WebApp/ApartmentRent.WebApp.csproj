@@ -172,6 +172,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataModel\ResultModel.cs" />
+    <Compile Include="Models\EnumType\ResultCodeEnum.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -223,7 +225,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -237,6 +238,19 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApartmentRent.Common\ApartmentRent.Common.csproj">
+      <Project>{0ADF5A26-2040-460B-8FA2-1A38A1394BF9}</Project>
+      <Name>ApartmentRent.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApartmentRent.IBLL\ApartmentRent.IBLL.csproj">
+      <Project>{ace93e55-ef47-49e6-a726-ea67152f6b29}</Project>
+      <Name>ApartmentRent.IBLL</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

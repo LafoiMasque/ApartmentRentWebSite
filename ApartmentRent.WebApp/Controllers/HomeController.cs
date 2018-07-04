@@ -3,11 +3,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ApartmentRent.IBLL;
 
 namespace ApartmentRent.WebApp.Controllers
 {
 	public class HomeController : Controller
 	{
+		public IBLL.IBuildingService BuildingService { get; set; }
+		public IBLL.IBuildRoomService BuildRoomService { get; set; }
+
 		public ActionResult Index()
 		{
 			return View();

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ApartmentRent.Model.CustomAttribute
+namespace ApartmentRent.Common.CustomEnum.EnumAttribute
 {
 	[AttributeUsage(AttributeTargets.Field)]
 	public class EnumDisplayAttribute : Attribute

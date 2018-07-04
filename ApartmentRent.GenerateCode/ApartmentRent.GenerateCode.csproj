@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{0ADF5A26-2040-460B-8FA2-1A38A1394BF9}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ApartmentRent.Common</RootNamespace>
-    <AssemblyName>ApartmentRent.Common</AssemblyName>
+    <ProjectGuid>{6A7135CF-13C7-4E83-BD90-ECEB20FD739C}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>ApartmentRent.GenerateCode</RootNamespace>
+    <AssemblyName>ApartmentRent.GenerateCode</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -30,14 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -46,24 +42,30 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CustomEnum\EnumAttribute\EnumDisplayAttribute.cs" />
-    <Compile Include="CustomEnum\EnumExtention\EnumTypeExtention.cs" />
+    <Compile Include="GenerateController\ControllerModel\ObjectModel.cs" />
+    <Compile Include="GenerateController\ControllerModel\ObjectsModel.cs" />
+    <Compile Include="GenerateController\ControllerModel\PropertyModel.cs" />
+    <Compile Include="GenerateController\GenerateControllerXml.cs" />
+    <Compile Include="GenerateService\GenerateServiceXml.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UtilityClass\CommonMethod.cs" />
-    <Compile Include="UtilityClass\ComputerHelper.cs" />
-    <Compile Include="UtilityClass\DataRelated.cs" />
-    <Compile Include="UtilityClass\ExpressionClone.cs" />
-    <Compile Include="UtilityClass\ImageClass.cs" />
-    <Compile Include="UtilityClass\Md5Helper.cs" />
-    <Compile Include="UtilityClass\ReflectionClone.cs" />
-    <Compile Include="UtilityClass\SerializeHelper.cs" />
-    <Compile Include="UtilityClass\SqlHelper.cs" />
-    <Compile Include="UtilityClass\ValidateCode.cs" />
-    <Compile Include="XmlOperation\EntityModel.cs" />
-    <Compile Include="XmlOperation\XmlUtils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ApartmentRent.BLL\ApartmentRent.BLL.csproj">
+      <Project>{0bc1a8c1-b480-4d40-9db7-5bca382cdad8}</Project>
+      <Name>ApartmentRent.BLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApartmentRent.Common\ApartmentRent.Common.csproj">
+      <Project>{0ADF5A26-2040-460B-8FA2-1A38A1394BF9}</Project>
+      <Name>ApartmentRent.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApartmentRent.WebApp\ApartmentRent.WebApp.csproj">
+      <Project>{60c7065c-8274-4b50-91ed-a6168e355579}</Project>
+      <Name>ApartmentRent.WebApp</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

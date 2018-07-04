@@ -1,8 +1,8 @@
-﻿using ApartmentRent.Model.CustomAttribute;
+﻿using ApartmentRent.Common.CustomEnum.EnumAttribute;
 using System;
 using System.Linq;
 
-namespace ApartmentRent.Model.EnumExtention
+namespace ApartmentRent.Common.CustomEnum.EnumExtention
 {
 	public static class EnumTypeExtention
 	{

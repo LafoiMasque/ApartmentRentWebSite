@@ -3,7 +3,6 @@
 <#@ Assembly Name="EntityFramework" #>
 <#@ Assembly Name="System.Xml.Linq" #>
 <#@ Assembly Name="$(SolutionDir)ApartmentRent.Common\bin\Debug\ApartmentRent.Common.dll" #>
-<#@ Assembly Name="$(SolutionDir)ApartmentRent.Model\bin\Debug\ApartmentRent.Model.dll" #>
 <#@ import namespace="System" #>
 <#@ import namespace="System.IO" #>
 <#@ Import Namespace="System.Linq" #>
@@ -11,8 +10,7 @@
 <#@ import namespace="System.Data.Entity" #>
 <#@ import namespace="System.Reflection" #>
 <#@ Import Namespace="System.Collections.Generic" #>
-<#@ Import Namespace="ApartmentRent.Common.UtilityClass" #>
-<#@ Import Namespace="ApartmentRent.Model.DataModel" #>
+<#@ Import Namespace="ApartmentRent.Common.XmlOperation" #>
 <#
     string modelFile = @"D:\ProjectCode\VS2017\ApartmentRentWebSite\ApartmentRent.Model\bin\Debug\ApartmentRent.Model.dll";
 	string filePath = @"D:\ProjectCode\VS2017\ApartmentRentWebSite\ApartmentRent.WebApp\Config\entityInfo.xml";

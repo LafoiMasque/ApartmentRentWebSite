@@ -3,13 +3,14 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 using System.Xml.Serialization;
 
-namespace ApartmentRent.Common.UtilityClass
+namespace ApartmentRent.Common.XmlOperation
 {
 	/// <summary>
 	/// 操作Xml文件相关方法
@@ -57,7 +58,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public bool ExistXmlElementInstance<T>(Predicate<XElement> match) where T : class, new()
 		{
-			return ExistXmlElementInstance(typeof(T).Name, match);
+			return ExistXmlElementInstance(GetEntityName<T>(), match);
 		}
 
 		/// <summary>
@@ -78,7 +79,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns>实例集合</returns>
 		public List<T> GetXmlElementsInstance<T>() where T : class, new()
 		{
-			return GetXmlElementsInstance<T>(typeof(T).Name);
+			return GetXmlElementsInstance<T>(GetEntityName<T>());
 		}
 
 		/// <summary>
@@ -89,7 +90,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns>实例集合</returns>
 		public List<T> GetXmlElementsInstance<T>(Predicate<string> match) where T : class, new()
 		{
-			return GetXmlElementsInstance<T>(typeof(T).Name, match);
+			return GetXmlElementsInstance<T>(GetEntityName<T>(), match);
 		}
 
 		/// <summary>
@@ -164,7 +165,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public bool AddXmlElementInstance<T>(T model, Func<XElement, XElement> parentElementFunc) where T : class, new()
 		{
-			return AddXmlElementInstance<T>(typeof(T).Name, model, parentElementFunc);
+			return AddXmlElementInstance<T>(GetEntityName<T>(), model, parentElementFunc);
 		}
 
 		/// <summary>
@@ -212,7 +213,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public bool AddXmlElementsInstance<T>(IEnumerable<T> dataList, Func<XElement, XElement> parentElementFunc) where T : class, new()
 		{
-			return AddXmlElementsInstance<T>(typeof(T).Name, dataList, parentElementFunc);
+			return AddXmlElementsInstance<T>(GetEntityName<T>(), dataList, parentElementFunc);
 		}
 
 		/// <summary>
@@ -299,7 +300,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public bool EditXmlElementInstance<T>(T model, Predicate<XElement> match) where T : class, new()
 		{
-			return EditXmlElementInstance<T>(typeof(T).Name, model, match);
+			return EditXmlElementInstance<T>(GetEntityName<T>(), model, match);
 		}
 
 		/// <summary>
@@ -347,7 +348,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public bool EditXmlElementsInstance<T>(IEnumerable<T> dataList, Predicate<XElement> match) where T : class, new()
 		{
-			return EditXmlElementsInstance<T>(typeof(T).Name, dataList, match);
+			return EditXmlElementsInstance<T>(GetEntityName<T>(), dataList, match);
 		}
 
 		/// <summary>
@@ -395,7 +396,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public bool ReplaceXmlElementInstance<T>(T model, Predicate<XElement> match) where T : class, new()
 		{
-			return ReplaceXmlElementInstance<T>(typeof(T).Name, model, match);
+			return ReplaceXmlElementInstance<T>(GetEntityName<T>(), model, match);
 		}
 
 		/// <summary>
@@ -443,7 +444,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public bool ReplaceXmlElementsInstance<T>(IEnumerable<T> dataList, Predicate<XElement> match) where T : class, new()
 		{
-			return ReplaceXmlElementsInstance<T>(typeof(T).Name, dataList, match);
+			return ReplaceXmlElementsInstance<T>(GetEntityName<T>(), dataList, match);
 		}
 
 		/// <summary>
@@ -550,7 +551,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public bool DeleteXmlElementsInstance<T>(Predicate<XElement> match) where T : class, new()
 		{
-			return DeleteXmlElementsInstance(typeof(T).Name, match);
+			return DeleteXmlElementsInstance(GetEntityName<T>(), match);
 		}
 
 		/// <summary>
@@ -607,7 +608,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public static bool ExistXmlElement<T>(string filePath, Predicate<XElement> match) where T : class, new()
 		{
-			return ExistXmlElement(filePath, typeof(T).Name, match);
+			return ExistXmlElement(filePath, GetEntityName<T>(), match);
 		}
 
 		/// <summary>
@@ -631,7 +632,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns>实例集合</returns>
 		public static List<T> GetXmlElements<T>(string filePath) where T : class, new()
 		{
-			return GetXmlElements<T>(filePath, typeof(T).Name);
+			return GetXmlElements<T>(filePath, GetEntityName<T>());
 		}
 
 		/// <summary>
@@ -643,7 +644,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns>实例集合</returns>
 		public static List<T> GetXmlElements<T>(string filePath, Predicate<string> match) where T : class, new()
 		{
-			return GetXmlElements<T>(filePath, typeof(T).Name, match);
+			return GetXmlElements<T>(filePath, GetEntityName<T>(), match);
 		}
 
 		/// <summary>
@@ -700,7 +701,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public static bool AddXmlElement<T>(string filePath, T model, Func<XElement, XElement> parentElementFunc) where T : class, new()
 		{
-			return AddXmlElement<T>(filePath, typeof(T).Name, model, parentElementFunc);
+			return AddXmlElement<T>(filePath, GetEntityName<T>(), model, parentElementFunc);
 		}
 
 		/// <summary>
@@ -752,7 +753,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public static bool AddXmlElements<T>(string filePath, ICollection<T> dataList, Func<XElement, XElement> parentElementFunc) where T : class, new()
 		{
-			return AddXmlElements<T>(filePath, typeof(T).Name, dataList, parentElementFunc);
+			return AddXmlElements<T>(filePath, GetEntityName<T>(), dataList, parentElementFunc);
 		}
 
 		/// <summary>
@@ -857,7 +858,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public static bool EditXmlElement<T>(string filePath, T model, Predicate<XElement> match) where T : class, new()
 		{
-			return EditXmlElement<T>(filePath, typeof(T).Name, model, match);
+			return EditXmlElement<T>(filePath, GetEntityName<T>(), model, match);
 		}
 
 		/// <summary>
@@ -909,7 +910,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public static bool EditXmlElements<T>(string filePath, IEnumerable<T> dataList, Predicate<XElement> match) where T : class, new()
 		{
-			return EditXmlElements<T>(filePath, typeof(T).Name, dataList, match);
+			return EditXmlElements<T>(filePath, GetEntityName<T>(), dataList, match);
 		}
 
 		/// <summary>
@@ -961,7 +962,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public static bool ReplaceXmlElement<T>(string filePath, T model, Predicate<XElement> match) where T : class, new()
 		{
-			return ReplaceXmlElement<T>(filePath, typeof(T).Name, model, match);
+			return ReplaceXmlElement<T>(filePath, GetEntityName<T>(), model, match);
 		}
 
 		/// <summary>
@@ -1014,7 +1015,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public static bool ReplaceXmlElements<T>(string filePath, IEnumerable<T> dataList, Predicate<XElement> match) where T : class, new()
 		{
-			return ReplaceXmlElements<T>(filePath, typeof(T).Name, dataList, match);
+			return ReplaceXmlElements<T>(filePath, GetEntityName<T>(), dataList, match);
 		}
 
 		/// <summary>
@@ -1165,7 +1166,7 @@ namespace ApartmentRent.Common.UtilityClass
 		/// <returns></returns>
 		public static bool DeleteXmlElements<T>(string filePath, Predicate<XElement> match) where T : class, new()
 		{
-			return DeleteXmlElements(filePath, typeof(T).Name, match);
+			return DeleteXmlElements(filePath, GetEntityName<T>(), match);
 		}
 
 		/// <summary>
@@ -1203,7 +1204,89 @@ namespace ApartmentRent.Common.UtilityClass
 
 		#region 公用部分
 
+		#region 公用
+
+		/// <summary>
+		/// 修改元素的属性
+		/// </summary>
+		/// <param name="element">元素</param>
+		/// <param name="elementName">元素名</param>
+		/// <param name="objectValue">属性值</param>
+		private static void EidtXElementAttribute(XElement element, string elementName, object objectValue)
+		{
+			if (element != null)
+			{
+				if (objectValue.ToString().Contains("//www"))
+				{
+					XName xName = XName.Get(element.Name.LocalName, objectValue.ToString());
+					element.Name = xName;
+				}
+				else
+				{
+					element.SetAttributeValue(elementName, objectValue);
+				}
+			}
+		}
+
+		/// <summary>
+		/// 创建元素
+		/// </summary>
+		/// <param name="elementName">元素名</param>
+		/// <returns>生成的元素</returns>
+		private static XElement CreateXElement(string elementName, XElement parentElement)
+		{
+			XElement xElement = new XElement(parentElement != null ? parentElement.Name.Namespace + elementName : elementName);
+			return xElement;
+		}
+
+		#endregion
+
 		#region 集合类型
+
+		/// <summary>
+		/// 获取实体的名字
+		/// </summary>
+		/// <typeparam name="T"></typeparam>
+		/// <returns></returns>
+		private static string GetEntityName<T>() where T : class, new()
+		{
+			return GetEntityName(typeof(T));
+		}
+
+		/// <summary>
+		/// 获取实体的名字
+		/// </summary>
+		/// <param name="objectType"></param>
+		/// <returns></returns>
+		private static string GetEntityName(Type objectType)
+		{
+			DisplayNameAttribute displayNameAttribute = objectType.GetCustomAttribute<DisplayNameAttribute>();
+			return GetCustomAttributeName(displayNameAttribute, objectType.Name);
+		}
+
+		/// <summary>
+		/// 获取属性的名字
+		/// </summary>
+		/// <param name="property"></param>
+		/// <returns></returns>
+		private static string GetPropertyName(PropertyInfo property)
+		{
+			DisplayNameAttribute displayNameAttribute = property.GetCustomAttribute<DisplayNameAttribute>();
+			return GetCustomAttributeName(displayNameAttribute, property.Name);
+		}
+
+		/// <summary>
+		/// 获取自定义的特性的名字
+		/// </summary>
+		/// <param name="displayNameAttribute"></param>
+		/// <param name="defaultName"></param>
+		/// <returns></returns>
+		private static string GetCustomAttributeName(DisplayNameAttribute displayNameAttribute, string defaultName)
+		{
+			string entityName = displayNameAttribute != null && !string.IsNullOrEmpty(displayNameAttribute.DisplayName) ?
+				displayNameAttribute.DisplayName : defaultName;
+			return entityName;
+		}
 
 		/// <summary>
 		/// 获取xml文件的根节点
@@ -1240,7 +1323,7 @@ namespace ApartmentRent.Common.UtilityClass
 			if (parentElement != null)
 			{
 				elements = parentElement.Elements(elementName);
-				if (elements.Count() == 0 && parentElement.Name == elementName)
+				if (elements.Count() == 0 && parentElement.Name.LocalName == elementName)
 				{
 					elements = new List<XElement>() { parentElement };
 				}
@@ -1429,7 +1512,7 @@ namespace ApartmentRent.Common.UtilityClass
 						{
 							continue;
 						}
-						string propertyName = property.Name;
+						string propertyName = GetPropertyName(property);
 						object value = null;
 						Type propType = property.PropertyType;
 						//是否是自定义类
@@ -1565,7 +1648,7 @@ namespace ApartmentRent.Common.UtilityClass
 			if (!string.IsNullOrEmpty(elementName))
 			{
 				if (rootElement == null)
-					xElement = new XElement(elementName);
+					xElement = CreateXElement(elementName, null);
 				else
 					xElement = GetXmlElementInParent(rootElement, elementName);
 			}
@@ -1629,7 +1712,7 @@ namespace ApartmentRent.Common.UtilityClass
 				foreach (var item in dataList)
 				{
 					Type objectType = item.GetType();
-					XElement element = new XElement(objectType.Name);
+					XElement element = CreateXElement(GetEntityName(objectType), parentElement);
 					PropertyInfo[] propertyInfos = objectType.GetProperties();
 					//获取数组和集合的属性
 					IEnumerable<PropertyInfo> propertyInfoList = propertyInfos.Where(p => p.PropertyType.GetInterface("ICollection", false) != null);
@@ -1639,6 +1722,7 @@ namespace ApartmentRent.Common.UtilityClass
 						if (propertyValue == null)
 							continue;
 						Type propType = propertyInfo.PropertyType;
+						string propertyName = GetPropertyName(propertyInfo);
 						//是否是自定义类
 						bool isCustomClass = propType != typeof(object) && Type.GetTypeCode(propType) == TypeCode.Object;
 						bool isCollection = propertyInfoList.Contains(propertyInfo);
@@ -1660,15 +1744,15 @@ namespace ApartmentRent.Common.UtilityClass
 							var attribute = propertyInfo.GetCustomAttribute<XmlAttributeAttribute>();
 							if (attribute != null)
 							{
-								element.SetAttributeValue(propertyInfo.Name, propertyValue);
+								EidtXElementAttribute(element, propertyName, propertyValue);
 							}
 							else
 							{
-								element.SetElementValue(propertyInfo.Name, propertyValue);
+								element.SetElementValue(propertyName, propertyValue);
 							}
 						}
 					}
-					if (parentElement != null)
+					if (parentElement != null && parentElement.Name != element.Name)
 					{
 						parentElement.Add(element);
 					}
@@ -1729,11 +1813,14 @@ namespace ApartmentRent.Common.UtilityClass
 						continue;
 					XElement element = null;
 					//if (jObject.Count > 1)
-					//	element = new XElement(elementName);
+					//	element = CreateXElement(elementName);
 					foreach (var keyValue in jObject)
 					{
 						var jsonKey = keyValue.Key;
 						var jsonValue = keyValue.Value;
+						var realValue = GetJsonObjectValue(jsonValue);
+						if (realValue == null)
+							continue;
 						bool isObject = jsonValue.Type == JTokenType.Object;
 						bool isArray = jsonValue.Type == JTokenType.Array;
 						if ((isObject || isArray))
@@ -1752,7 +1839,7 @@ namespace ApartmentRent.Common.UtilityClass
 						else
 						{
 							if (element == null)
-								element = new XElement(elementName);
+								element = CreateXElement(elementName, parentElement);
 							bool isAttribute = jsonKey.StartsWith("@");
 							if (isAttribute)
 							{
@@ -1760,11 +1847,11 @@ namespace ApartmentRent.Common.UtilityClass
 							}
 							if (isAttribute)
 							{
-								element.SetAttributeValue(jsonKey, GetJsonObjectValue(jsonValue));
+								EidtXElementAttribute(element, jsonKey, realValue);
 							}
 							else
 							{
-								element.SetElementValue(jsonKey, GetJsonObjectValue(jsonValue));
+								element.SetElementValue(jsonKey, realValue);
 							}
 						}
 					}
@@ -1836,53 +1923,56 @@ namespace ApartmentRent.Common.UtilityClass
 			var matchElements = GetMatchElement(parentElement, elementName, match);
 			var matchCopyElements = GetObjectClone(matchElements);
 			int elementCount = matchElements != null ? matchElements.Count() : 0;
-			if (dataCount > 0 && elementCount > 0)
+			for (int i = 0; (!isReplace && i < dataCount) || (isReplace && i < dataCount && i < elementCount); i++)
 			{
-				for (int i = 0; i < elementCount && i < dataCount; i++)
+				var dataItem = dataList[i];
+				Type type = dataItem.GetType();
+				bool isAddElement = i < elementCount;
+				XElement originElement = isAddElement ? matchElements.ElementAt(i) : CreateXElement(elementName, parentElement);
+				XElement originCopyElement = isAddElement ? matchCopyElements.ElementAt(i) : null;
+				PropertyInfo[] propertyInfos = type.GetProperties();
+				//获取数组和集合的属性
+				IEnumerable<PropertyInfo> propertyInfoList = propertyInfos.Where(p => p.PropertyType.GetInterface("ICollection", false) != null);
+				foreach (PropertyInfo propertyInfo in propertyInfos)
 				{
-					var dataItem = dataList[i];
-					Type type = dataItem.GetType();
-					XElement originElement = matchElements.ElementAt(i);
-					XElement originCopyElement = matchCopyElements.ElementAt(i);
-					PropertyInfo[] propertyInfos = type.GetProperties();
-					//获取数组和集合的属性
-					IEnumerable<PropertyInfo> propertyInfoList = propertyInfos.Where(p => p.PropertyType.GetInterface("ICollection", false) != null);
-					foreach (PropertyInfo propertyInfo in propertyInfos)
+					object propertyValue = propertyInfo.GetValue(dataItem);
+					if (propertyValue == null)
+						continue;
+					Type propType = propertyInfo.PropertyType;
+					string propertyName = GetPropertyName(propertyInfo);
+					//是否是自定义类
+					bool isCustomClass = propType != typeof(object) && Type.GetTypeCode(propType) == TypeCode.Object;
+					bool isCollection = propertyInfoList.Contains(propertyInfo);
+					if ((isCollection || isCustomClass) && propertyValue != null)
 					{
-						object propertyValue = propertyInfo.GetValue(dataItem);
-						Type propType = propertyInfo.PropertyType;
-						//是否是自定义类
-						bool isCustomClass = propType != typeof(object) && Type.GetTypeCode(propType) == TypeCode.Object;
-						bool isCollection = propertyInfoList.Contains(propertyInfo);
-						if ((isCollection || isCustomClass) && propertyValue != null)
+						object temp = null;
+						if (!isCollection)
 						{
-							object temp = null;
-							if (!isCollection)
-							{
-								temp = new object[] { propertyValue };
-							}
-							else
-							{
-								temp = propertyValue;
-							}
-							EditElementListToXml(originElement, propertyInfo.Name, temp as IList, match, isReplace);
+							temp = new object[] { propertyValue };
 						}
 						else
 						{
-							XmlAttributeAttribute attribute = propertyInfo.GetCustomAttribute<XmlAttributeAttribute>();
-							if (attribute != null && (!isReplace || (isReplace && originCopyElement.Attribute(propertyInfo.Name) != null)))
-							{
-								originElement.SetAttributeValue(propertyInfo.Name, propertyValue);
-							}
-							else if (attribute == null && (!isReplace || (isReplace && originCopyElement.Element(propertyInfo.Name) != null)))
-							{
-								originElement.SetElementValue(propertyInfo.Name, propertyValue);
-							}
+							temp = propertyValue;
+						}
+						EditElementListToXml(originElement, propertyName, temp as IList, match, isReplace);
+					}
+					else
+					{
+						XmlAttributeAttribute attribute = propertyInfo.GetCustomAttribute<XmlAttributeAttribute>();
+						if (attribute != null && (!isReplace || (isReplace && originCopyElement.Attribute(propertyName) != null)))
+						{
+							EidtXElementAttribute(originElement, propertyName, propertyValue);
+						}
+						else if (attribute == null && (!isReplace || (isReplace && originCopyElement.Element(propertyName) != null)))
+						{
+							originElement.SetElementValue(propertyName, propertyValue);
 						}
 					}
 				}
-				isOK = true;
+				if (!isAddElement)
+					parentElement.Add(originElement);
 			}
+			isOK = true;
 			return isOK;
 		}
 
@@ -1930,58 +2020,63 @@ namespace ApartmentRent.Common.UtilityClass
 		{
 			bool isOK = false;
 			int dataCount = jArray != null ? jArray.Count : 0;
+			if (dataCount == 0)
+				return isOK;
 			var matchElements = GetMatchElement(parentElement, elementName, match);
 			var matchCopyElements = GetObjectClone(matchElements);
 			int elementCount = matchElements != null ? matchElements.Count() : 0;
-			if (dataCount > 0 && elementCount > 0)
+			for (int i = 0; (!isReplace && i < dataCount) || (isReplace && i < dataCount && i < elementCount); i++)
 			{
-				for (int i = 0; i < elementCount && i < dataCount; i++)
+				bool isAddElement = i < elementCount;
+				XElement originElement = isAddElement ? matchElements.ElementAt(i) : CreateXElement(elementName, parentElement);
+				XElement originCopyElement = isAddElement ? matchCopyElements.ElementAt(i) : null;
+				JObject jObject = jArray[i] as JObject;
+				if (jObject != null)
 				{
-					XElement originElement = matchElements.ElementAt(i);
-					XElement originCopyElement = matchCopyElements.ElementAt(i);
-					JObject jObject = jArray[i] as JObject;
-					if (jObject != null)
+					foreach (var item in jObject)
 					{
-						foreach (var item in jObject)
+						var jsonKey = item.Key;
+						var jsonValue = item.Value;
+						var realValue = GetJsonObjectValue(jsonValue);
+						if (realValue == null)
+							continue;
+						bool isObject = jsonValue.Type == JTokenType.Object;
+						bool isArray = jsonValue.Type == JTokenType.Array;
+						if ((isObject || isArray) && jsonValue.HasValues)
 						{
-							var jsonKey = item.Key;
-							var jsonValue = item.Value;
-							bool isObject = jsonValue.Type == JTokenType.Object;
-							bool isArray = jsonValue.Type == JTokenType.Array;
-							if ((isObject || isArray) && jsonValue.HasValues)
+							JArray JArrayValue = null;
+							if (isObject)
 							{
-								JArray JArrayValue = null;
-								if (isObject)
-								{
-									JArrayValue = GetJArrayByJToken(jsonValue);
-								}
-								else
-								{
-									JArrayValue = jsonValue as JArray;
-								}
-								EditXmlElementListByJson(originElement, item.Key, JArrayValue, match, isReplace);
+								JArrayValue = GetJArrayByJToken(jsonValue);
 							}
 							else
 							{
-								bool isAttribute = jsonKey.StartsWith("@");
-								if (isAttribute)
-								{
-									jsonKey = jsonKey.TrimStart('@');
-								}
-								if (isAttribute && (!isReplace || (isReplace && originCopyElement.Attribute(jsonKey) != null)))
-								{
-									originElement.SetAttributeValue(jsonKey, GetJsonObjectValue(jsonValue));
-								}
-								else if (!isAttribute && (!isReplace || (isReplace && originCopyElement.Element(jsonKey) != null)))
-								{
-									originElement.SetElementValue(jsonKey, GetJsonObjectValue(jsonValue));
-								}
+								JArrayValue = jsonValue as JArray;
+							}
+							EditXmlElementListByJson(originElement, item.Key, JArrayValue, match, isReplace);
+						}
+						else
+						{
+							bool isAttribute = jsonKey.StartsWith("@");
+							if (isAttribute)
+							{
+								jsonKey = jsonKey.TrimStart('@');
+							}
+							if (isAttribute && (!isReplace || (isReplace && originCopyElement.Attribute(jsonKey) != null)))
+							{
+								EidtXElementAttribute(originElement, jsonKey, realValue);
+							}
+							else if (!isAttribute && (!isReplace || (isReplace && originCopyElement.Element(jsonKey) != null)))
+							{
+								originElement.SetElementValue(jsonKey, realValue);
 							}
 						}
 					}
+					if (!isAddElement)
+						parentElement.Add(originElement);
 				}
-				isOK = true;
 			}
+			isOK = true;
 			return isOK;
 		}
 

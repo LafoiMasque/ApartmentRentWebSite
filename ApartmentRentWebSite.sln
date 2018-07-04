@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApartmentRent.WebApp", "Apa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApartmentRent.WebApp.Tests", "ApartmentRent.WebApp.Tests\ApartmentRent.WebApp.Tests.csproj", "{A293CA83-3F28-45B5-AFFD-E59776FBCB0F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApartmentRent.GenerateCode", "ApartmentRent.GenerateCode\ApartmentRent.GenerateCode.csproj", "{6A7135CF-13C7-4E83-BD90-ECEB20FD739C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{A293CA83-3F28-45B5-AFFD-E59776FBCB0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A293CA83-3F28-45B5-AFFD-E59776FBCB0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A293CA83-3F28-45B5-AFFD-E59776FBCB0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A7135CF-13C7-4E83-BD90-ECEB20FD739C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A7135CF-13C7-4E83-BD90-ECEB20FD739C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A7135CF-13C7-4E83-BD90-ECEB20FD739C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A7135CF-13C7-4E83-BD90-ECEB20FD739C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -29,7 +29,7 @@
 // <copyright file="<#= type.Name #>">
 //		Copyright(c)2018 rights reserved.
 //		开 发 者：黄翔宇@中国
-//		生成时间：<#= DateTime.Now.ToString("yyyy-MM-dd HH:mm") #>
+//		生成时间：<#= DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") #>
 // </copyright>
 //------------------------------------------------------------------------------
 using ApartmentRent.IBLL;

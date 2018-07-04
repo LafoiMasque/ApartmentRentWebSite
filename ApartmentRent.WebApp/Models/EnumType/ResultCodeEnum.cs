@@ -1,6 +1,6 @@
-﻿using ApartmentRent.Model.CustomAttribute;
+﻿using ApartmentRent.Common.CustomEnum.EnumAttribute;
 
-namespace ApartmentRent.Model.EnumType
+namespace ApartmentRent.WebApp.Models.EnumType
 {
 	public enum ResultCodeEnum
 	{

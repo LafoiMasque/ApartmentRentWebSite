@@ -1,6 +1,6 @@
 ﻿using System.Xml.Serialization;
 
-namespace ApartmentRent.Model.DataModel
+namespace ApartmentRent.Common.XmlOperation
 {
 	public class EntityModel
 	{

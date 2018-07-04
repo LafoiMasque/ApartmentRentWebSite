@@ -9,7 +9,7 @@
 // <copyright file="WebSiteDbContext">
 //		Copyright(c)2018 rights reserved.
 //		开 发 者：黄翔宇@中国
-//		生成时间：2018-07-01 15:35
+//		生成时间：2018-07-02 12:23:29
 // </copyright>
 //------------------------------------------------------------------------------
 using ApartmentRent.IBLL;

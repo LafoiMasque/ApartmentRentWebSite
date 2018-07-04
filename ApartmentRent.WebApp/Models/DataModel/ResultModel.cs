@@ -1,8 +1,8 @@
-﻿using ApartmentRent.Model.EnumExtention;
-using ApartmentRent.Model.EnumType;
+﻿using ApartmentRent.Common.CustomEnum.EnumExtention;
+using ApartmentRent.WebApp.Models.EnumType;
 using System;
 
-namespace ApartmentRent.Model.DataModel
+namespace ApartmentRent.WebApp.Models.DataModel
 {
 	[Serializable]
 	public class ResultModel<T>
@@ -26,11 +26,7 @@ namespace ApartmentRent.Model.DataModel
 		public ResultModel(T data) : this(ResultCodeEnum.Success.Display(), data)
 		{
 		}
-
-		//public ResultModel(ResultCodeEnum resultCodeEnum, T data) : this((int)resultCodeEnum, resultCodeEnum.Display(), data)
-		//{
-		//}
-
+		
 		public ResultModel(string message, T data) : this((int)ResultCodeEnum.Success, message, data)
 		{
 		}

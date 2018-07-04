@@ -1,5 +1,4 @@
-﻿using ApartmentRent.Common.UtilityClass;
-using ApartmentRent.Model.DataModel;
+﻿using ApartmentRent.Common.XmlOperation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
