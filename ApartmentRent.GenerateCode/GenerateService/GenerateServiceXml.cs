@@ -1,4 +1,4 @@
-﻿using ApartmentRent.Common.XmlOperation;
+﻿using LafoiApp.Common.XmlOperation;
 using ApartmentRent.GenerateCode.GenerateController.ControllerModel;
 using System;
 using System.Collections.Generic;
@@ -12,10 +12,10 @@ namespace ApartmentRent.GenerateCode.GenerateService
 {
 	class GenerateServiceXml
 	{
-		public void CreateServiceXml()
+		public void CreateServiceXml(string solutionPath)
 		{
-			string modelFile = @"D:\ProjectCode\VS2017\ApartmentRentWebSite\ApartmentRent.BLL\bin\Debug\ApartmentRent.BLL.dll";
-			string filePath = @"D:\ProjectCode\VS2017\ApartmentRentWebSite\ApartmentRent.WebApp\Config\services.xml";
+			string modelFile = solutionPath + @"ApartmentRent.BLL\bin\Debug\ApartmentRent.BLL.dll";
+			string filePath = solutionPath + @"ApartmentRent.WebApp\Config\services.xml";
 			if (File.Exists(modelFile))
 			{
 				byte[] fileData = File.ReadAllBytes(modelFile);

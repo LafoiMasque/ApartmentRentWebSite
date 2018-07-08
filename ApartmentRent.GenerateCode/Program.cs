@@ -20,15 +20,17 @@ namespace ApartmentRent.GenerateCode
 				Console.Write("生成目标：");
 				ConsoleKeyInfo consoleKeyInfo = Console.ReadKey();
 				Console.WriteLine();
+				string baseDir = AppDomain.CurrentDomain.BaseDirectory;
+				string solutionPath = baseDir.Substring(0, baseDir.IndexOf("ApartmentRent.GenerateCode"));
 				switch (consoleKeyInfo.Key)
 				{
 					case ConsoleKey.C:
 						GenerateControllerXml generateControllerXml = new GenerateControllerXml();
-						generateControllerXml.CreateControllerXml();
+						generateControllerXml.CreateControllerXml(solutionPath);
 						break;
 					case ConsoleKey.S:
 						GenerateServiceXml generateServiceXml = new GenerateServiceXml();
-						generateServiceXml.CreateServiceXml();
+						generateServiceXml.CreateServiceXml(solutionPath);
 						break;
 					default:
 						isContinue = false;

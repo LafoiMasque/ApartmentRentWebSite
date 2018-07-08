@@ -58,13 +58,13 @@
       <Project>{0bc1a8c1-b480-4d40-9db7-5bca382cdad8}</Project>
       <Name>ApartmentRent.BLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\ApartmentRent.Common\ApartmentRent.Common.csproj">
-      <Project>{0ADF5A26-2040-460B-8FA2-1A38A1394BF9}</Project>
-      <Name>ApartmentRent.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ApartmentRent.WebApp\ApartmentRent.WebApp.csproj">
       <Project>{60c7065c-8274-4b50-91ed-a6168e355579}</Project>
       <Name>ApartmentRent.WebApp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LafoiApp.Common\LafoiApp.Common.csproj">
+      <Project>{0fe4ca99-7512-4001-b3e1-715257bb9974}</Project>
+      <Name>LafoiApp.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

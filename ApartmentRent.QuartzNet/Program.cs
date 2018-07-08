@@ -10,6 +10,7 @@ namespace ApartmentRent.QuartzNet
 	{
 		static void Main(string[] args)
 		{
+			
 		}
 	}
 }

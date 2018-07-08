@@ -58,10 +58,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ApartmentRent.Common\ApartmentRent.Common.csproj">
-      <Project>{0adf5a26-2040-460b-8fa2-1a38a1394bf9}</Project>
-      <Name>ApartmentRent.Common</Name>
-    </ProjectReference>
     <ProjectReference Include="..\ApartmentRent.IDAL\ApartmentRent.IDAL.csproj">
       <Project>{8c4a1350-bb0e-4202-a540-2e778ec896f9}</Project>
       <Name>ApartmentRent.IDAL</Name>
@@ -69,6 +65,10 @@
     <ProjectReference Include="..\ApartmentRent.Model\ApartmentRent.Model.csproj">
       <Project>{7609d51f-dd2c-4eab-84db-86dc60c94040}</Project>
       <Name>ApartmentRent.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LafoiApp.Common\LafoiApp.Common.csproj">
+      <Project>{0fe4ca99-7512-4001-b3e1-715257bb9974}</Project>
+      <Name>LafoiApp.Common</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

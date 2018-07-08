@@ -1,4 +1,4 @@
-﻿using ApartmentRent.Common.CustomEnum.EnumAttribute;
+﻿using LafoiApp.Common.CustomEnum.EnumAttribute;
 
 namespace ApartmentRent.WebApp.Models.EnumType
 {

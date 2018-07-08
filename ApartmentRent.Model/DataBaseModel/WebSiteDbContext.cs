@@ -4,11 +4,14 @@ namespace ApartmentRent.Model.DataBaseModel
 	using System.Data.Entity;
 	using System.ComponentModel.DataAnnotations.Schema;
 	using System.Linq;
+	using System.Configuration;
 
 	public partial class WebSiteDbContext : DbContext
 	{
+		private static readonly string m_connectionString = ConfigurationManager.AppSettings["contextString"];
+
 		public WebSiteDbContext()
-			: base("name=WebSiteDbContext")
+			: base(LafoiApp.Common.SecurityEncrypt.DesEncrypt.Decrypt(m_connectionString))
 		{
 		}
 

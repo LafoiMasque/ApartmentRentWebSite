@@ -1,4 +1,4 @@
-﻿using ApartmentRent.Common.XmlOperation;
+﻿using LafoiApp.Common.XmlOperation;
 using ApartmentRent.GenerateCode.GenerateController.ControllerModel;
 using System;
 using System.Collections.Generic;
@@ -12,10 +12,10 @@ namespace ApartmentRent.GenerateCode.GenerateController
 {
 	class GenerateControllerXml
 	{
-		public void CreateControllerXml()
+		public void CreateControllerXml(string solutionPath)
 		{
-			string modelFile = @"D:\ProjectCode\VS2017\ApartmentRentWebSite\ApartmentRent.WebApp\bin\ApartmentRent.WebApp.dll";
-			string filePath = @"D:\ProjectCode\VS2017\ApartmentRentWebSite\ApartmentRent.WebApp\Config\controllers.xml";
+			string modelFile = solutionPath + @"ApartmentRent.WebApp\bin\ApartmentRent.WebApp.dll";
+			string filePath = solutionPath + @"ApartmentRent.WebApp\Config\controllers.xml";
 			if (File.Exists(modelFile))
 			{
 				byte[] fileData = File.ReadAllBytes(modelFile);
@@ -28,7 +28,7 @@ namespace ApartmentRent.GenerateCode.GenerateController
 					xmlUtils.BeginInitialize(filePath);
 					ObjectsModel objectsModel = new ObjectsModel()
 					{
-						Xmlns= "http://www.springframework.net",
+						Xmlns = "http://www.springframework.net",
 					};
 					List<ObjectModel> objectModelList = new List<ObjectModel>();
 					foreach (var type in typeList)

@@ -38,6 +38,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -70,6 +71,12 @@
   <ItemGroup>
     <Folder Include="DataModel\" />
     <Folder Include="EnumType\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LafoiApp.Common\LafoiApp.Common.csproj">
+      <Project>{0fe4ca99-7512-4001-b3e1-715257bb9974}</Project>
+      <Name>LafoiApp.Common</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

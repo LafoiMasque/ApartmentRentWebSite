@@ -52,6 +52,12 @@
     <Reference Include="Common.Logging.Core, Version=3.0.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e, processorArchitecture=MSIL">
       <HintPath>..\packages\Common.Logging.Core.3.0.0\lib\net40\Common.Logging.Core.dll</HintPath>
     </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="log4net, Version=2.0.8.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
       <HintPath>..\packages\log4net.2.0.8\lib\net45-full\log4net.dll</HintPath>
     </Reference>
@@ -80,12 +86,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -163,6 +178,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\AppStartConfig.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -181,6 +197,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\entityInfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Config\ImportantConfiguration.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="Config\services.xml">
@@ -243,13 +262,25 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ApartmentRent.Common\ApartmentRent.Common.csproj">
-      <Project>{0ADF5A26-2040-460B-8FA2-1A38A1394BF9}</Project>
-      <Name>ApartmentRent.Common</Name>
+    <ProjectReference Include="..\ApartmentRent.BLL\ApartmentRent.BLL.csproj">
+      <Project>{0bc1a8c1-b480-4d40-9db7-5bca382cdad8}</Project>
+      <Name>ApartmentRent.BLL</Name>
     </ProjectReference>
     <ProjectReference Include="..\ApartmentRent.IBLL\ApartmentRent.IBLL.csproj">
       <Project>{ace93e55-ef47-49e6-a726-ea67152f6b29}</Project>
       <Name>ApartmentRent.IBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ApartmentRent.Model\ApartmentRent.Model.csproj">
+      <Project>{7609D51F-DD2C-4EAB-84DB-86DC60C94040}</Project>
+      <Name>ApartmentRent.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LafoiApp.Common\LafoiApp.Common.csproj">
+      <Project>{0fe4ca99-7512-4001-b3e1-715257bb9974}</Project>
+      <Name>LafoiApp.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LafoiApp.Core\LafoiApp.Core.csproj">
+      <Project>{90E26F99-B7F8-4E9B-B6B8-07C2043CE275}</Project>
+      <Name>LafoiApp.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
